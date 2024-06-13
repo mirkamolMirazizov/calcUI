@@ -20,7 +20,6 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.multicalculator.Calculator
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,12 +52,13 @@ fun CalcView() {
                 }
                 Row {
                     CalcNumericButton(0, displayText)
+                    CalcOperationButton("/", displayText)
                     CalcEqualsButton(displayText)
                 }
             }
             Spacer(modifier = Modifier.width(16.dp))
             Column(modifier = Modifier.weight(1f)) {
-                val operations = listOf("+", "-", "*", "/")
+                val operations = listOf("+", "-", "*")
                 operations.forEach { operation ->
                     CalcOperationButton(operation, displayText)
                 }
@@ -73,7 +73,7 @@ fun CalcDisplay(display: MutableState<String>) {
         text = display.value,
         modifier = Modifier
             .height(50.dp)
-            .padding(5.dp)
+            .padding(2.dp)
             .fillMaxWidth()
             .background(MaterialTheme.colorScheme.primary),
         color = Color.White,
@@ -104,13 +104,13 @@ fun CalcNumericButton(number: Int, display: MutableState<String>) {
             }
         },
         modifier = Modifier
-            .padding(4.dp)
+            .padding(10.dp)
             .background(MaterialTheme.colorScheme.secondary)
     ) {
         Text(
             text = number.toString(),
             color = MaterialTheme.colorScheme.onSecondary,
-            fontSize = 20.sp,
+            fontSize = 30.sp,
             fontFamily = FontFamily.Cursive,
             fontWeight = FontWeight.Bold
         )
@@ -124,13 +124,13 @@ fun CalcOperationButton(operation: String, display: MutableState<String>) {
             display.value += " $operation "
         },
         modifier = Modifier
-            .padding(4.dp)
+            .padding(10.dp)
             .background(MaterialTheme.colorScheme.tertiary)
     ) {
         Text(
             text = operation,
             color = MaterialTheme.colorScheme.onTertiary,
-            fontSize = 20.sp,
+            fontSize = 30.sp,
             fontFamily = FontFamily.Cursive,
             fontWeight = FontWeight.Bold
         )
@@ -142,13 +142,13 @@ fun CalcEqualsButton(display: MutableState<String>) {
     Button(
         onClick = { display.value = "0" },
         modifier = Modifier
-            .padding(4.dp)
+            .padding(10.dp)
             .background(MaterialTheme.colorScheme.primary)
     ) {
         Text(
             text = "=",
             color = MaterialTheme.colorScheme.onPrimary,
-            fontSize = 20.sp,
+            fontSize = 30.sp,
             fontFamily = FontFamily.Cursive,
             fontWeight = FontWeight.Bold
         )
