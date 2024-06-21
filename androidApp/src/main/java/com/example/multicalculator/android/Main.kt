@@ -86,7 +86,6 @@ fun CalcView() {
         }
     }
 }
-
 @Composable
 fun CalcRow(startNum: Int, display: MutableState<String>, onPress: (Int) -> Unit) {
     Row(modifier = Modifier.padding(0.dp)) {
@@ -95,6 +94,7 @@ fun CalcRow(startNum: Int, display: MutableState<String>, onPress: (Int) -> Unit
         }
     }
 }
+//{}
 
 @Composable
 fun CalcNumericButton(number: Int, display: MutableState<String>, onPress: (Int) -> Unit) {
